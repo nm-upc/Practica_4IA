@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "Control de Acceso ESP32-S3",
+  "editor": "wokwi",
+  "show": "always",
+  "parts": [
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": 200, "left": 200, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": 0, "left": 500, "attrs": { "pins": "i2c", "address": "0x27" } },
+    { "type": "wokwi-relay-module", "id": "relay", "top": 0, "left": 800, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 160, "left": 840, "attrs": { "color": "blue" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 220, "left": 840, "attrs": { "value": "220" } },
+    { "type": "wokwi-analog-joystick", "id": "ir0", "top": 620, "left": 0, "attrs": {} },
+    { "type": "wokwi-analog-joystick", "id": "ir1", "top": 620, "left": 150, "attrs": {} },
+    { "type": "wokwi-analog-joystick", "id": "ir2", "top": 620, "left": 300, "attrs": {} },
+    { "type": "wokwi-analog-joystick", "id": "ir3", "top": 620, "left": 450, "attrs": {} },
+    { "type": "board-mfrc522", "id": "rfid", "top": 400, "left": 800, "attrs": {} }
+  ],
+  "connections": [
+    ["esp:GND.1",  "lcd:GND",   "black",  ["h0"]],
+    ["esp:3V3",    "lcd:VCC",   "red",    ["h0"]],
+    ["esp:4",      "lcd:SDA",   "green",  ["h0"]],
+    ["esp:5",      "lcd:SCL",   "blue",   ["h0"]],
+
+    ["esp:8",      "relay:IN",  "orange", ["h0"]],
+    ["esp:3V3",    "relay:VCC", "red",    ["h0"]],
+    ["esp:GND.2",  "relay:GND", "black",  ["h0"]],
+
+    ["esp:38",     "led1:A",    "blue",   ["h0"]],
+    ["led1:C",     "r1:1",      "blue",   ["h0"]],
+    ["r1:2",       "esp:GND.2", "black",  ["h0"]],
+
+    ["esp:36",     "ir0:VERT",  "green",  ["h0"]],
+    ["esp:3V3",    "ir0:VCC",   "red",    ["h0"]],
+    ["esp:GND.3",  "ir0:GND",   "black",  ["h0"]],
+
+    ["esp:37",     "ir1:VERT",  "green",  ["h0"]],
+    ["esp:3V3",    "ir1:VCC",   "red",    ["h0"]],
+    ["esp:GND.3",  "ir1:GND",   "black",  ["h0"]],
+
+    ["esp:39",     "ir2:VERT",  "green",  ["h0"]],
+    ["esp:3V3",    "ir2:VCC",   "red",    ["h0"]],
+    ["esp:GND.3",  "ir2:GND",   "black",  ["h0"]],
+
+    ["esp:32",     "ir3:VERT",  "green",  ["h0"]],
+    ["esp:3V3",    "ir3:VCC",   "red",    ["h0"]],
+    ["esp:GND.3",  "ir3:GND",   "black",  ["h0"]],
+
+    ["esp:12",     "rfid:SCK",  "orange", ["h0"]],
+    ["esp:11",     "rfid:MOSI", "yellow", ["h0"]],
+    ["esp:13",     "rfid:MISO", "green",  ["h0"]],
+    ["esp:10",     "rfid:SDA",  "blue",   ["h0"]],
+    ["esp:14",     "rfid:RST",  "purple", ["h0"]],
+    ["esp:3V3",    "rfid:3.3V", "red",    ["h0"]],
+    ["esp:GND.1",  "rfid:GND",  "black",  ["h0"]]
+  ]
+}
